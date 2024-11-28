@@ -1,0 +1,11 @@
+CREATE FUNCTION getNthHighestSalary(@N INT) RETURNS INT AS
+BEGIN
+   RETURN (
+       SELECT TOP 1 CASE WHEN SALARY >=0 THEN SALARY ELSE null END 
+       FROM(
+        SELECT *,DENSE_RANK()OVER (ORDER BY SALARY DESC) AS RN
+        FROM Employee
+       )T
+       WHERE RN = @N
+    );
+END
