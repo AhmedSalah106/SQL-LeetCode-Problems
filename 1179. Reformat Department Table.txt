@@ -1,0 +1,18 @@
+/* Write your T-SQL query statement below */
+WITH T AS(
+    SELECT  DISTINCT ID FROM Department
+)
+SELECT T.id ,
+        (SELECT revenue FROM Department D WHERE T.ID = D.ID AND month = 'Jan' ) AS Jan_Revenue,
+        (SELECT revenue FROM Department D WHERE T.ID = D.ID AND month = 'Feb' ) AS Feb_Revenue,
+        (SELECT revenue FROM Department D WHERE T.ID = D.ID AND month = 'Mar' ) AS Mar_Revenue,
+        (SELECT revenue FROM Department D WHERE T.ID = D.ID AND month = 'Apr' ) AS Apr_Revenue,
+        (SELECT revenue FROM Department D WHERE T.ID = D.ID AND month = 'May' ) AS May_Revenue,
+        (SELECT revenue FROM Department D WHERE T.ID = D.ID AND month = 'Jun' ) AS Jun_Revenue,
+        (SELECT revenue FROM Department D WHERE T.ID = D.ID AND month = 'Jul' ) AS Jul_Revenue,
+        (SELECT revenue FROM Department D WHERE T.ID = D.ID AND month = 'Aug' ) AS Aug_Revenue,
+        (SELECT revenue FROM Department D WHERE T.ID = D.ID AND month = 'Sep' ) AS Sep_Revenue,
+        (SELECT revenue FROM Department D WHERE T.ID = D.ID AND month = 'Oct' ) AS Oct_Revenue,
+        (SELECT revenue FROM Department D WHERE T.ID = D.ID AND month = 'Nov' ) AS Nov_Revenue,
+        (SELECT revenue FROM Department D WHERE T.ID = D.ID AND month = 'Dec' ) AS Dec_Revenue
+        FROM T
