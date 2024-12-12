@@ -1,0 +1,10 @@
+WITH T AS(
+    SELECT buyer_id  , COUNT(buyer_id) AS orders_in_2019
+    FROM Orders
+    WHERE order_date BETWEEN '2019-01-01' AND '2019-12-31'
+    GROUP BY buyer_id
+)
+SELECT U.user_id AS buyer_id , U.join_date , ISNULL(T.orders_in_2019,0) AS orders_in_2019
+FROM Users U
+LEFT OUTER JOIN T
+ON U.user_id = T.buyer_id
