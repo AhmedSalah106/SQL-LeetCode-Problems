@@ -1,0 +1,6 @@
+SELECT  P.transaction_date  ,SUM(CASE WHEN C.amount%2=1 THEN C.amount ELSE 0 END ) AS odd_sum
+,SUM(CASE WHEN C.amount%2=0 THEN C.amount ELSE 0 END ) AS even_sum
+FROM transactions C 
+JOIN transactions P
+ON C.transaction_id = p.transaction_iD
+GROUP BY P.transaction_date 
